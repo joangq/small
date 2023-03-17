@@ -20,3 +20,5 @@ The main idea of this repo is that of a personal project. I want to use the idea
 
 ## Current state
 
+![](./assets/smol-program-ast.png)
+
