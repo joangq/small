@@ -18,7 +18,10 @@ In Gries' book formal logic is used to prove theorems about programs regarding c
 
 The main idea of this repo is that of a personal project. I want to use the ideas from The Science of Programming to create a SmallLang-inspired interpreted language, using the concisely defined grammar to generate a toy compiler. Once the language by itself is consistent, the axiomatization can start: Using [z3](https://github.com/Z3Prover/z3), a theorem prover by Microsoft Research, and given a proper specification, the language can have theorem-proving capabilities by establishing axioms for each statement, and generating valid predicates after their execution.
 
+Because it's a toy language, I decided to implement it in Python making it easier to parse and read. I'm using [Lark](https://github.com/lark-parser/lark) for parsing and grammar. 
+
 ## Current state
 
 ![](./assets/smol-program-ast.png)
 
+Currently, Small compiles *"manually"*, for development (and practice) purposes I'm keeping it as a Jupyter Notebook for now. The grammar is mostly correct. I'm having issues with parsing multiple arguments (Also some redundant grammar for tuples), which makes multiple-argument printing a multiline output (Which typically is a single line, separated by a whitespace). The program ouptuts it's corresponding abstract syntax tree (AST) and keeps track of the program state as a function. This, plus the fact that is interpreted makes it posible for a REPL system.
