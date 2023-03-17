@@ -1,0 +1,12 @@
+print("Hello, World", "!");
+print(20,21,27);
+
+a := 0;
+while a <= 10 {
+    a := a+1;
+    if a mod 2 == 1 then
+        skip;
+    else
+        print(a);
+    fi
+}

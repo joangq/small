@@ -1,0 +1,34 @@
+concat
+  concat
+    concat
+      print
+        string_args
+          "Hello, World"
+          "!"
+      print
+        expression_args
+          20
+          21
+          27
+    assignment
+      a
+      0
+  while
+    logical_leq
+      a
+      10
+    concat
+      assignment
+        a
+        add
+          a
+          1
+      conditional
+        logical_eq
+          mod
+            a
+            2
+          1
+        skip
+        print	a
+
