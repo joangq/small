@@ -1,0 +1,70 @@
+?program: statement
+        | program ";"
+        | program ";" statement -> concat
+
+?statement: "break" -> break
+          | skip
+          | IDENTIFIER ":=" expression -> assignment
+          | conditional program? 
+          | while program?
+          | print -> print
+
+?conditional: "if" logic "{" program "}" "else" "{" program "}"
+            | "if" logic "then" [":"] program "else" [":"] program ("endif" | "fi")
+
+?while: "while" logic "{" program "}"
+      | "while" logic "do" program "endwhile"
+
+?print: "print" "(" print_args ")"
+      | "print" print_args
+
+?print_args: string_args
+           | expression_args
+           | logic_args
+
+?string_args: STRING ("," STRING)*
+
+?logic_args: logic ("," logic)*
+
+?expression_args: expression ("," expression)*
+
+?logic: "(" logic ")"
+      | boolean 
+      | logic "and" logic -> logical_and
+      | logic "or" logic -> logical_or
+      | "not" logic -> logical_not
+      | expression "<=" expression -> logical_leq
+      | expression ">=" expression -> logical_geq
+      | expression "==" expression -> logical_eq
+      | expression "!=" expression -> logical_neq
+      | expression "<" expression -> logical_lt
+      | expression ">" expression -> logical_gt
+
+?expression: factors
+           | expression "+" factors -> add
+           | expression "-" factors -> sub
+
+?factors: value
+        | factors "*" value -> mul
+        | factors "/" value -> div
+        | factors "\\" value -> idiv 
+        | mod
+
+?mod: factors "%" value
+    | factors "mod" value
+
+?value: NUMBER 
+     | IDENTIFIER
+     | "(" expression ")"
+
+?boolean: true | false
+?true: "true"
+?false: "false"
+
+?skip: "skip" | "continue"
+
+%import common.CNAME -> IDENTIFIER
+%import common.ESCAPED_STRING   -> STRING
+%import common.SIGNED_NUMBER    -> NUMBER
+%import common.WS
+%ignore WS
