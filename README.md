@@ -20,6 +20,8 @@ The main idea of this repo is that of a personal project. I want to use the idea
 
 Because it's a toy language, I decided to implement it in Python making it easier to parse and read. I'm using [Lark](https://github.com/lark-parser/lark) for parsing and grammar. 
 
+![](./assets/smol-graph.png)
+
 ## Current state
 
 ![](./assets/smol-program-ast.png)
